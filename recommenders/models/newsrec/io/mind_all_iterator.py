@@ -150,7 +150,14 @@ class MINDAllIterator(BaseIterator):
                 ]
 
                 impr_news = [self.nid2index[i.split("-")[0]] for i in impr.split()]
-                label = [int(i.split("-")[1]) for i in impr.split()]
+                try:
+                    if not test_mode:
+                        label = [int(i.split("-")[1]) for i in impr.split()]
+                    else:
+                        label = [0 for i in impr.split()]
+                except:
+                    test_mode = True
+                    label = [0 for i in impr.split()]
                 uindex = self.uid2index[uid] if uid in self.uid2index else 0
 
                 self.histories.append(history)
