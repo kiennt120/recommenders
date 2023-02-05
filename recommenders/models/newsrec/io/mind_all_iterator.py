@@ -138,7 +138,8 @@ class MINDAllIterator(BaseIterator):
         self.labels = []
         self.impr_indexes = []
         self.uindexes = []
-
+        test_mode = False   
+        
         with tf.io.gfile.GFile(behaviors_file, "r") as rd:
             impr_index = 0
             for line in rd:
